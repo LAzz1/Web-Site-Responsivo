@@ -1,0 +1,101 @@
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./Assets/img/redondo.png" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="./CSS/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="./CSS/thankyou/style.css" />
+  <title>Contato Enviado</title>
+</head>
+
+<body>
+  <header class="desk-header">
+    <div class="logoSection">
+      <img class="logo" src="./Assets/img/logo.png" onclick="window.location.href='/'">
+    </div>
+    <nav class="blur blur-rounded">
+      <div class="navBar">
+        <ul class="navLinks">
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/sobre.html">Sobre nós</a></li>
+          <li><a href="/servicos.html">Serviços</a></li>
+        </ul>
+      </div>
+    </nav>
+    <a class="contact" onclick="window.location.href='/contato'">
+      <button class="btn btn-dark" style="border-radius: 20px;">
+        Fale conosco
+      </button>
+    </a>
+  </header>
+
+  <!-- MOBILE HEADER VERSION-->
+  <section class="mobile">
+    <section class="header-mb">
+      <div class="mobile-header">
+        <div class="logoSection-mb">
+          <img class="logo-mb" src="./Assets/img/logo.png" onclick="window.location.href='/'">
+        </div>
+      </div>
+    </section>
+    <!-- MOBILE NAV BOTTOM-->
+    <section class="nav-bottom">
+      <div class="navBar-mb">
+      </div>
+      <div class="navIcons-mb">
+        <div class="navTabs-mb">
+          <a href="/servicos.html">
+            <img src="./Assets/menu icons/page.svg" id="servicesIcons">
+          </a>
+        </div>
+        <div class="navLogo-mb">
+          <a href="/">
+            <img src="./Assets/img/navLogo.png" id="logoIcons">
+          </a>
+        </div>
+        <div class="navTabs-mb">
+          <a href="/sobre.html">
+            <img src="./Assets/menu icons/aboutUs.svg" id="aboutIcons">
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- END OF MOBILE NAV BOTTOM-->
+  </section>
+  <!-- END OF MOBILE HEADER VERSION-->
+  <section class="tks-content">
+    <div class="msg-box">
+      <div class="successMsg" style="display: flex; flex-direction: column; align-items: center;">
+        <h1 class="display-4">Agradecemos o contato!</h1>
+        <p id="tks-msg" class="lead text-muted"
+          style="font-size: 25px; display: flex; flex-direction: column; align-items: center;">
+          Seu formulário foi enviado com sucesso! Entraremos em contato em breve.
+        </p>
+      </div>
+    </div>
+    <div class="check-animation">
+      <input type="checkbox" id="check">
+      <label for="check">
+        <div class="check-icon"></div>
+      </label>
+    </div>
+  </section>
+
+  <!-- SCRIPT SECTION -->
+  <script>
+    setTimeout(() => {
+      document.querySelector('[id="check"]').checked = true
+    }, 1870)
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        window.location.href = "/"
+      }, 5000)
+    })
+  </script>
+</body>
+
+</html>

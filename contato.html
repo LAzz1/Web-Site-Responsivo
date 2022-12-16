@@ -1,0 +1,310 @@
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./Assets/img/redondo.png" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="./CSS/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="./CSS/contact/style.css" />
+  <title>Fale conosco</title>
+</head>
+
+<body>
+  <header class="desk-header">
+    <div class="logoSection">
+      <img class="logo" src="./Assets/img/logo.png" onclick="window.location.href='/'">
+    </div>
+    <nav class="blur blur-rounded">
+      <div class="navBar">
+        <ul class="navLinks">
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/sobre.html">Sobre nós</a></li>
+          <li><a href="/servicos.html">Serviços</a></li>
+        </ul>
+      </div>
+    </nav>
+    <a class="contact" onclick="window.location.href='/contato'">
+      <button class="btn btn-dark" style="border-radius: 20px;">
+        Fale conosco
+      </button>
+    </a>
+  </header>
+
+  <!-- MOBILE HEADER VERSION-->
+  <section class="mobile">
+    <section class="header-mb">
+      <div class="mobile-header">
+        <div class="logoSection-mb">
+          <img class="logo-mb" src="./Assets/img/logo.png" onclick="window.location.href='/'">
+        </div>
+      </div>
+    </section>
+  </section>
+  <!-- END OF MOBILE HEADER VERSION-->
+
+  <section class="formSection">
+    <div class="container py-4">
+      <div class="row">
+        <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
+          <h3 class="text-center">Entre em contato</h3>
+          <form role="form" id="contact-form" method="post" action="connect.php">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Nome<a style="color: red;"> *</a></label>
+                  <small id="nameHelp" style="color:red;" class="form-text text-muted"></small>
+                  <div class="input-group mb-4">
+                    <input class="form-control" type="text" name="name">
+                  </div>
+                </div>
+                <div class="col-md-6 ps-2">
+                  <label>Empresa<a style="color: red;"> *</a></label>
+                  <small id="companyHelp" style="color:red;" class="form-text text-muted"></small>
+                  <div class="input-group">
+                    <input type="text" class="form-control" name="company">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Email<a style="color: red;"> *</a></label>
+                  <small id="emailHelp" style="color:red;" class="form-text text-muted"></small>
+                  <div class="input-group mb-4">
+                    <input class="form-control" type="text" name="email" placeholder="exemplo@exemplo.com">
+                  </div>
+                </div>
+                <div class="col-md-6 ps-2">
+                  <label>Telefone</label>
+                  <small id="phoneHelp" style="color:red;" class="form-text text-muted"></small>
+                  <div class="input-group">
+                    <input type="text" class="form-control" name="phone" placeholder="ex.: 11999999999">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mb-4">
+                <label>Mensagem<a style="color: red;"> *</a></label>
+                <textarea name="msg" class="form-control" id="description" rows="4"></textarea>
+                <div style="display: flex;" class="inputDescription">
+                  <small id="char_count" style="font-size: 12px; padding: 5px 0 0 93%;">0/5000</small>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-check form-switch mb-4">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Eu concordo com os <a href="/politica"
+                        class="text-dark"><u>Termos e Condições</u></a> de privacidade dos
+                      dados.</label>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <button type="submit" onclick="inputWordValidation()" class="btn w-100" id="buttonSubmit">Enviar
+                    Mensagem</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOBILE NAV BOTTOM-->
+  <section class="nav-bottom">
+    <div class="navBar-mb">
+    </div>
+    <div class="navIcons-mb">
+      <div class="navTabs-mb">
+        <a href="/servicos.html">
+          <img src="./Assets/menu icons/page.svg" id="servicesIcons">
+        </a>
+      </div>
+      <div class="navLogo-mb">
+        <a href="/">
+          <img src="./Assets/img/navLogo.png" id="logoIcons">
+        </a>
+      </div>
+      <div class="navTabs-mb">
+        <a href="/sobre.html">
+          <img src="./Assets/menu icons/aboutUs.svg" id="aboutIcons">
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- END OF MOBILE NAV BOTTOM-->
+
+  <!-- SCRIPT SECTION -->
+
+  <!-- MSG CHAR COUNT -->
+  <script>
+    let textArea = document.getElementById("description");
+    let characterCounter = document.getElementById("char_count");
+    const maxNumOfChars = 5000;
+    const charCount = () => {
+      let numOfEnteredChars = textArea.value.length;
+      let counter = numOfEnteredChars;
+      if (Number(counter) <= 1) {
+        characterCounter.textContent = counter + "/5000";
+        characterCounter.style.color = "red";
+      } else if (Number(counter) > 5000) {
+        characterCounter.textContent = counter + "/5000";
+        characterCounter.style.color = "red";
+      } else {
+        characterCounter.textContent = counter + "/5000";
+        characterCounter.style.color = 'green';
+      }
+    }
+    textArea.addEventListener("input", charCount);
+  </script>
+  <!-- END OF MSG CHAR COUNT -->
+  <!-- INPUT SUBMISSION VALIDATION -->
+  <script>
+    function inputWordValidation() {
+      var names = ["name", "company", "email", "phone", "msg"]
+      names.forEach((data) => {
+        document.querySelector(`[name=${data}]`).value = String(document.querySelector(`[name=${data}]`).value.trim())
+      })
+
+      if (document.querySelector('[id="buttonSubmit"]').className != "btn btn-info w-100") {
+        event.preventDefault();
+      }
+      else {
+        if (document.querySelector('[name="phone"]').value == '') {
+          document.querySelector('[name="phone"]').value = 'não informou'
+        }
+      }
+    }
+  </script>
+  <!-- END OF INPUT SUBMISSION VALIDATION -->
+  <!-- INPUTS REAL TIME VALIDATION -->
+  <script>
+    //  NAME INPUT VALIDATION
+    document.querySelector('[name="name"]').addEventListener("input", () => {
+      var name = document.querySelector('[name="name"]').value.split('').length
+
+      if (name < 2) {
+        document.querySelector('[id="nameHelp"]').textContent = "O nome deve conter no minimo 2 letras"
+        document.querySelector('[id="nameHelp"]').classList.remove('text-muted')
+        document.querySelector('[name="name"]').style = "border-color: red; box-shadow: 0 0 5px 0 rgb(255, 0, 0);"
+      }
+      else {
+        document.querySelector('[id="nameHelp"]').textContent = ""
+        document.querySelector('[id="nameHelp"]').classList.add('text-muted')
+        document.querySelector('[name="name"]').style = ""
+      }
+    })
+
+    // EMAIL INPUT VALIDATION
+    document.querySelector('[name="email"]').addEventListener("input", () => {
+      var emailValidation = document.querySelector('[name="email"]').value.match(/^\S+@\S+\.\S+$/)
+
+      if (emailValidation == null) {
+        document.querySelector('[id="emailHelp"]').textContent = "Formato de email invalido."
+        document.querySelector('[id="emailHelp"]').classList.remove('text-muted')
+        document.querySelector('[name="email"]').style = "border-color: red; box-shadow: 0 0 5px 0 rgb(255, 0, 0);"
+      }
+      else {
+        document.querySelector('[id="emailHelp"]').textContent = ''
+        document.querySelector('[id="emailHelp"]').classList.add('text-muted')
+        document.querySelector('[name="email"]').style = ""
+      }
+    })
+
+    //  PHONE INPUT VALIDATION
+    document.querySelector('[name="phone"]').addEventListener("input", () => {
+      var phoneValidation = document.querySelector('[name="phone"]').value.match(/^\(?(?:[14689][1-9]|2[12478]|3[1234578]|5[1345]|7[134579])\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$/)
+
+      if (document.querySelector('[name="phone"]').value == '') {
+        document.querySelector('[name="phone"]').style = ""
+        document.querySelector('[id="phoneHelp"]').textContent = ""
+        return
+      }
+
+      if (phoneValidation == null) {
+        document.querySelector('[id="phoneHelp"]').textContent = "Formato invalido, insira apenas numeros."
+        document.querySelector('[id="phoneHelp"]').classList.remove('text-muted')
+        document.querySelector('[name="phone"]').style = "border-color: red; box-shadow: 0 0 5px 0 rgb(255, 0, 0);"
+      }
+      else {
+        document.querySelector('[id="phoneHelp"]').textContent = ""
+        document.querySelector('[id="phoneHelp"]').classList.add('text-muted')
+        document.querySelector('[name="phone"]').style = ""
+      }
+    })
+
+    //  COMPANY INPUT VALIDATION
+    document.querySelector('[name="company"]').addEventListener("input", () => {
+      var company = document.querySelector('[name="company"]').value.split('').length
+
+      if (company < 2) {
+        document.querySelector('[id="companyHelp"]').textContent = 'O sobrenome deve conter no minimo 2 letras'
+        document.querySelector('[id="companyHelp"]').classList.remove('text-muted')
+        document.querySelector('[name="company"]').style = "border-color: red; box-shadow: 0 0 5px 0 rgb(255, 0, 0);"
+      }
+      else {
+        document.querySelector('[id="companyHelp"]').textContent = ""
+        document.querySelector('[id="companyHelp"]').classList.add('text-muted')
+        document.querySelector('[name="company"]').style = ""
+      }
+    })
+
+    //  MESSAGE INPUT VALIDATION
+    document.querySelector('[name="msg"]').addEventListener("input", () => {
+      var msgValidation = document.querySelector('[name="msg"]').value.split('').length
+
+      if (msgValidation < 2) {
+        document.getElementById("char_count").style.color = "red"
+        document.querySelector('[name="msg"]').style = "border-color: red; box-shadow: 0 0 5px 0 rgb(255, 0, 0);"
+      }
+      else {
+        document.querySelector('[name="msg"]').style = ""
+      }
+    })
+  </script>
+  <!-- END OF INPUTS REAL TIME VALIDATION -->
+  <!-- BUTTON BLUE VALIDATION-->
+  <script>
+    document.addEventListener("input", () => {
+      var company = document.querySelector('[name="company"]').value.split('').length
+      var msgValidation = document.querySelector('[name="msg"]').value.split('').length
+      var termsNConditions = document.querySelector('[class="form-check-input"]').checked
+      var phoneValidation = document.querySelector('[name="phone"]').value.match(/^\(?(?:[14689][1-9]|2[12478]|3[1234578]|5[1345]|7[134579])\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$/)
+      var emailValidation = document.querySelector('[name="email"]').value.match(/^\S+@\S+\.\S+$/)
+      var name = document.querySelector('[name="name"]').value.split('').length
+
+      if (document.querySelector('[name="phone"]').value == '') {
+        phoneValidation == 'true'
+        document.querySelector('[name="phone"]').style = ""
+        document.querySelector('[id="phoneHelp"]').textContent = ""
+
+        if (emailValidation == null || name < 2 || company < 2 || msgValidation < 2 || termsNConditions == false) {
+          document.querySelector('[id="buttonSubmit"]').className = "btn w-100"
+          document.querySelector('[id="buttonSubmit"]').style = ""
+        }
+        else {
+          document.querySelector('[id="buttonSubmit"]').className = "btn btn-info w-100"
+          document.querySelector('[id="buttonSubmit"]').style = "background: #3385ff; background: -webkit-linear-gradient(to right, #3385ff, #275496);background: linear-gradient(to right, #3385ff, #275496);"
+        }
+        return
+      }
+
+      if (emailValidation == null || phoneValidation == null || name < 2 || company < 2 || msgValidation < 2 || termsNConditions == false) {
+        document.querySelector('[id="buttonSubmit"]').className = "btn w-100"
+        document.querySelector('[id="buttonSubmit"]').style = ""
+      }
+      else {
+        document.querySelector('[id="buttonSubmit"]').className = "btn btn-info w-100"
+        document.querySelector('[id="buttonSubmit"]').style = "background: #3385ff; background: -webkit-linear-gradient(to right, #3385ff, #275496);background: linear-gradient(to right, #3385ff, #275496);"
+      }
+    })
+  </script>
+  <!-- END OF BUTTON BLUE VALIDATION-->
+
+  <!-- END OF SCRIPT SECTION -->
+</body>
+<footer>
+
+</footer>
+
+</html>
